@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rss_reader/components/feeds_list.dart';
+import 'package:rss_reader/components/search_delegate.dart';
+import 'package:rss_reader/constants/app_constants.dart';
 import 'package:rss_reader/providers/api.dart';
 
 class Homepage extends StatefulWidget {
@@ -25,6 +27,17 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: const Text("Rss Reader"),
         centerTitle: true,
+        backgroundColor: green,
+        actions: [
+          IconButton(
+              onPressed: () {
+                showSearch(
+                    context: context,
+                    delegate:
+                        CustomSearchDelegate(getFeedsFuture: _getFeedsFuture));
+              },
+              icon: const Icon(Icons.search))
+        ],
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
@@ -32,6 +45,7 @@ class _HomepageState extends State<Homepage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.refresh),
+        backgroundColor: Colors.greenAccent,
         onPressed: () {
           setState(() {
             _getFeedsFuture = getFeeds();
