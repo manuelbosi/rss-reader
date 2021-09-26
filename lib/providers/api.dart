@@ -14,5 +14,7 @@ Future<List<FeedModel>> getFeeds() async {
       .map((RssItem singleFeed) => FeedModel.fromData(singleFeed))
       .toList();
 
+  print(feedsList.first.title);
+
   return feedsList;
 }

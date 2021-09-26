@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:rss_reader/components/feeds_list.dart';
+import 'package:rss_reader/providers/api.dart';
 
-List<String> menuEntries = [
-  "Settings",
-];
-
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  // initialize empty future to prevent future called twice
+  late Future _getFeedsFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _getFeedsFuture = getFeeds();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +28,15 @@ class Homepage extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
+        child: buildFeedList(_getFeedsFuture),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.refresh),
+        onPressed: () {
+          setState(() {
+            _getFeedsFuture = getFeeds();
+          });
+        },
       ),
     );
   }
