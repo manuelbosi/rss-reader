@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rss_reader/models/feed.dart';
-import 'package:rss_reader/providers/api.dart';
+import 'package:rss_reader/services/api.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
