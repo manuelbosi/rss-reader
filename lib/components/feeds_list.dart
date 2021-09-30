@@ -55,7 +55,3 @@ Widget buildFeedList(getFeedsFuture) {
     },
   );
 }
-
-Widget buildSearchResults() {
-  return Column();
-}
