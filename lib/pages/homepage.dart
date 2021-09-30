@@ -28,7 +28,7 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: const Text("Rss Reader"),
         centerTitle: true,
-        backgroundColor: green,
+        backgroundColor: blue,
         actions: [
           IconButton(
               onPressed: () {
@@ -46,7 +46,7 @@ class _HomepageState extends State<Homepage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.refresh),
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: blue,
         onPressed: () {
           setState(() {
             _getFeedsFuture = getFeeds();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
 
 // UI
-const green = Colors.greenAccent;
+const Color green = Colors.greenAccent;
+const Color blue = Color(0xFF203354);

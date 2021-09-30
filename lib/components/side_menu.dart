@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rss_reader/constants/app_constants.dart';
 import 'package:rss_reader/models/side_menu_item.dart';
 
 List<SideMenuItem> menuEntries = [
@@ -12,7 +13,7 @@ Widget sideMenu(BuildContext context) {
       Container(
         width: double.infinity,
         height: 150,
-        decoration: BoxDecoration(color: Colors.greenAccent.shade200),
+        decoration: const BoxDecoration(color: blue),
         child: const Center(
           child: Text(
             "RSS READER",
