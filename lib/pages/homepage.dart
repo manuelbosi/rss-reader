@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rss_reader/components/feeds_list.dart';
 import 'package:rss_reader/components/search_delegate.dart';
+import 'package:rss_reader/components/side_menu.dart';
 import 'package:rss_reader/constants/app_constants.dart';
-import 'package:rss_reader/providers/api.dart';
+import 'package:rss_reader/services/api.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class _HomepageState extends State<Homepage> {
         ],
       ),
       body: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: buildFeedList(_getFeedsFuture),
       ),
       floatingActionButton: FloatingActionButton(
@@ -52,6 +53,7 @@ class _HomepageState extends State<Homepage> {
           });
         },
       ),
+      drawer: sideMenu(context),
     );
   }
 }
