@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:rss_reader/models/feed.dart';
 import 'package:webfeed/domain/rss_feed.dart';
 import 'package:http/http.dart' as http;
@@ -14,7 +16,7 @@ Future<List<FeedModel>> getFeeds({String query = ''}) async {
       .map((RssItem singleFeed) => FeedModel.fromData(singleFeed))
       .toList();
 
-  print(feedsList.first.title);
+  log(feedsList.first.title);
 
   if (query.isNotEmpty) return getFilteredFeeds(query, feedsList);
 
