@@ -53,7 +53,7 @@ class _HomepageState extends State<Homepage> {
           });
         },
       ),
-      drawer: sideMenu(context),
+      drawer: const SideMenu(),
     );
   }
 }
