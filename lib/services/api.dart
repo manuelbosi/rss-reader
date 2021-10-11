@@ -9,18 +9,24 @@ const String feedsUrl =
     'https://www.mise.gov.it/index.php/it/per-i-media/notizie?format=feed&type=rss';
 
 Future<List<FeedModel>> getFeeds({String query = ''}) async {
-  final response = await http.get(Uri.parse(feedsUrl));
-  final RssFeed responseFeeds = RssFeed.parse(response.body);
 
-  List<FeedModel> feedsList = responseFeeds.items!
-      .map((RssItem singleFeed) => FeedModel.fromData(singleFeed))
-      .toList();
+  try {
+    final response = await http.get(Uri.parse(feedsUrl));
+    final RssFeed responseFeeds = RssFeed.parse(response.body);
 
-  log(feedsList.first.title);
+    List<FeedModel> feedsList = responseFeeds.items!
+        .map((RssItem singleFeed) => FeedModel.fromData(singleFeed))
+        .toList();
 
-  if (query.isNotEmpty) return getFilteredFeeds(query, feedsList);
+    log(feedsList.first.title);
 
-  return feedsList;
+    if (query.isNotEmpty) return getFilteredFeeds(query, feedsList);
+
+    return feedsList;  
+  } catch (e) {
+    return Future.error(e);
+  }
+  
 }
 
 List<FeedModel> getFilteredFeeds(String query, List<FeedModel> feedList) {
