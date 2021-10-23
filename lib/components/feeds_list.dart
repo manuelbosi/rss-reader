@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rss_reader/constants/app_constants.dart';
 import 'package:rss_reader/models/feed.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -46,12 +47,22 @@ Widget buildFeedList(getFeedsFuture) {
                 );
               },
             );
+          case ConnectionState.none:
+            return const Center(
+              child: Icon(Icons.error),
+            );
           default:
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: Icon(Icons.error),
+            );
         }
       }
 
-      return const Center(child: CircularProgressIndicator());
+      return const Center(
+        child: CircularProgressIndicator(
+          color: blue,
+        ),
+      );
     },
   );
 }
