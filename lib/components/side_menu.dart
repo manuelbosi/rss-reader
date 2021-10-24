@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rss_reader/constants/app_constants.dart';
 import 'package:rss_reader/models/side_menu_item.dart';
@@ -29,23 +28,54 @@ class SideMenu extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             itemCount: menuEntries.length,
             itemBuilder: (context, index) {
-              return RawMaterialButton(
-                onPressed: () {
-                  // Navigator.pushNamed(context, '/settings');
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Settings()));
-                },
-                splashColor: Colors.white,
-                child: Text(menuEntries[index].text),
+              return SettingButton(
+                icon: Icons.settings,
+                name: menuEntries[index].text,
               );
             },
           ),
         )
       ])),
+    );
+  }
+}
+
+class SettingButton extends StatelessWidget {
+  const SettingButton({Key? key, required this.icon, required this.name})
+      : super(key: key);
+
+  final IconData icon;
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          size: 26,
+          color: Colors.black87,
+        ),
+        const SizedBox(
+          width: 8,
+        ),
+        RawMaterialButton(
+          highlightColor: Colors.transparent,
+          onPressed: () {
+            // Navigator.pushNamed(context, '/settings');
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Settings()));
+          },
+          splashColor: Colors.transparent,
+          child: Text(
+            name,
+            style: const TextStyle(fontSize: 16, color: Colors.black87),
+          ),
+        )
+      ],
     );
   }
 }
