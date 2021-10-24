@@ -9,40 +9,43 @@ List<SideMenuItem> menuEntries = [
 ];
 
 class SideMenu extends StatelessWidget {
-  const SideMenu({ Key? key }) : super(key: key);
+  const SideMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-      return Drawer(
-    child: SafeArea(
-        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      Container(
-        width: double.infinity,
-        height: 150,
-        decoration: const BoxDecoration(color: blue),
-        child: const Center(
-          child: Text(
-            "RSS READER",
-            style: TextStyle(fontSize: 28, color: Colors.white),
+    return Drawer(
+      child: SafeArea(
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Container(
+          width: double.infinity,
+          height: 150,
+          decoration: const BoxDecoration(color: blue),
+          child: const Center(
+            child: Text(
+              "RSS READER",
+              style: TextStyle(fontSize: 28, color: Colors.white),
+            ),
           ),
         ),
-      ),
-      Expanded(
-        child: ListView.builder(
-          itemCount: menuEntries.length,
-          itemBuilder: (context, index) {
-            return RawMaterialButton(
-              onPressed: () {
-                // Navigator.pushNamed(context, '/settings');
-                Navigator.push(context, CupertinoPageRoute(builder: (context) => const Settings()));
-              },
-              splashColor: Colors.white,
-              child: Text(menuEntries[index].text),
-            );
-          },
-        ),
-      )
-    ])),
-  );
+        Expanded(
+          child: ListView.builder(
+            itemCount: menuEntries.length,
+            itemBuilder: (context, index) {
+              return RawMaterialButton(
+                onPressed: () {
+                  // Navigator.pushNamed(context, '/settings');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Settings()));
+                },
+                splashColor: Colors.white,
+                child: Text(menuEntries[index].text),
+              );
+            },
+          ),
+        )
+      ])),
+    );
   }
 }
