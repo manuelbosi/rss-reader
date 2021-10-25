@@ -34,7 +34,9 @@ dependencies:
   http: ^0.13.3
   url_launcher: ^6.0.12
   shared_preferences: ^2.0.8
-  
+  workmanager:
+  flutter_local_notifications:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
