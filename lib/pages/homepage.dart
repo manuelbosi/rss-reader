@@ -19,7 +19,7 @@ class _HomepageState extends State<Homepage> {
   @override
   void initState() {
     super.initState();
-    _getFeedsFuture = getFeeds();
+    _getFeedsFuture = getFeeds(query: null);
   }
 
   @override
@@ -49,7 +49,7 @@ class _HomepageState extends State<Homepage> {
         backgroundColor: blue,
         onPressed: () {
           setState(() {
-            _getFeedsFuture = getFeeds();
+            _getFeedsFuture = getFeeds(query: null);
           });
         },
       ),
