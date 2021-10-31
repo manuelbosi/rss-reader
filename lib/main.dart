@@ -7,13 +7,7 @@ const String newFeed = 'NEW_FEED';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
   Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
-  Workmanager().registerPeriodicTask(
-    newFeed,
-    "newFeedNotification",
-    existingWorkPolicy: ExistingWorkPolicy.replace,
-  );
 
   runApp(const App());
 }

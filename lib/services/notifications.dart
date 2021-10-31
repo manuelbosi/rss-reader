@@ -22,8 +22,8 @@ void showNotificationWithDefaultSound(flip) async {
   // Show a notification after every 15 minute with the first
   // appearance happening a minute after invoking the method
   var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
-    'channelID',
-    'channelName',
+    'channel_feed',
+    'Feeds',
     importance: Importance.high,
     priority: Priority.high,
   );
