@@ -46,7 +46,8 @@ void showNotificationWithDefaultSound(flip) async {
 
 FlutterLocalNotificationsPlugin setupNotification() {
   FlutterLocalNotificationsPlugin flip = FlutterLocalNotificationsPlugin();
-  var android = const AndroidInitializationSettings('@mipmap/ic_launcher');
+  var android =
+      const AndroidInitializationSettings('@drawable/notification_icon');
   var ios = const IOSInitializationSettings();
 
   var settings = InitializationSettings(android: android, iOS: ios);
