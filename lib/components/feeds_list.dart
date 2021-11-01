@@ -13,7 +13,9 @@ Widget buildFeedList(getFeedsFuture) {
           case ConnectionState.waiting:
           case ConnectionState.active:
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: blue,
+              ),
             );
           case ConnectionState.done:
             return ListView.builder(
