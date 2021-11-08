@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
+import 'package:rss_reader/services/shared_preferences.dart';
 import 'package:webfeed/domain/rss_item.dart';
 import 'package:webfeed/domain/rss_feed.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:rss_reader/models/feed.dart';
 import 'package:rss_reader/services/notifications.dart';
@@ -36,24 +36,8 @@ List<FeedModel> getFilteredFeeds(String query, List<FeedModel> feedList) {
   return foundedFeed;
 }
 
-void saveLastFeedTitle(String title) async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setString('LAST_FEED_TITLE', title.toLowerCase());
-}
-
-Future<String> getLastFeedTitle() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getString('LAST_FEED_TITLE') ?? '';
-}
-
-Future<String> getKeyword() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getString('KEYWORD') ?? '';
-}
-
 Future<void> checkFeedsAndSendNotification() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  final String keyword = prefs.getString('KEYWORD') ?? '';
+  final String keyword = await getKeyword();
   final List<FeedModel> feeds = await getFeeds();
 
   bool canNotify = false;

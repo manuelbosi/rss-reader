@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rss_reader/constants/app_constants.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:rss_reader/services/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 
 class Settings extends StatefulWidget {
@@ -61,7 +61,7 @@ class _SettingsState extends State<Settings> {
               elevation: 0,
               highlightElevation: 2,
               onPressed: () {
-                _onClickSave();
+                _onClickSave(_keywordController.text);
               },
               color: blue,
               child: Row(
@@ -97,21 +97,18 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  void _onClickSave() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('KEYWORD', _keywordController.text);
+  void _onClickSave(String keyword) async {
+    await setKeyword(keyword);
     Navigator.pop(context);
   }
 
   void _getKeyword() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String keyword = prefs.getString('KEYWORD') ?? '';
+    final String keyword = await getKeyword();
     _keywordController.text = keyword;
   }
 
   void _updateNotificationsPreference(bool notificationPref) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('ENABLE_NOTIFICATIONS', notificationPref);
+    await setNotificationsPreference(notificationPref);
 
     if (notificationPref) {
       Workmanager().registerPeriodicTask(
@@ -131,9 +128,7 @@ class _SettingsState extends State<Settings> {
   }
 
   void _initNotificationsPreference() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final notificationsPref = prefs.getBool('ENABLE_NOTIFICATIONS') ?? false;
-
+    final bool notificationsPref = await getNotificationsPreference();
     setState(() {
       enableNotifications = notificationsPref;
     });
