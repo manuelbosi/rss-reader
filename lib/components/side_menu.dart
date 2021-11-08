@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rss_reader/constants/app_constants.dart';
 import 'package:rss_reader/models/side_menu_item.dart';
-import 'package:rss_reader/pages/settings.dart';
+import 'package:rss_reader/pages/settings_page.dart';
 
 List<SideMenuItem> menuEntries = [
   SideMenuItem(text: "Impostazioni"),

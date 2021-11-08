@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:rss_reader/constants/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
-// import 'package:rss_reader/models/setting_keyword.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -20,7 +19,7 @@ class _SettingsState extends State<Settings> {
 
   @override
   void initState() {
-    _getNotificationsPreference();
+    _initNotificationsPreference();
     _getKeyword();
     super.initState();
   }
@@ -131,7 +130,7 @@ class _SettingsState extends State<Settings> {
     });
   }
 
-  void _getNotificationsPreference() async {
+  void _initNotificationsPreference() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final notificationsPref = prefs.getBool('ENABLE_NOTIFICATIONS') ?? false;
 
