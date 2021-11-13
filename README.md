@@ -13,3 +13,6 @@ Read rss feeds from the website of Ministry of Economic Development.
 ### Homepage
 
 ### Settings
+
+
+*Disclaimer: the app idea is from Stefano Bompani*
