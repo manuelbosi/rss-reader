@@ -1,16 +1,14 @@
-# rss_reader
+# Simple RSS Reader
 
-Simple Rss Reader
+Read rss feeds from the website of Ministry of Economic Development.
 
-## Getting Started
+## Features
+- Read feeds
+- Go to original feed page
+- Add keyword on settings page
+- Enable / Disable notifications
+- Receive notifications if the app find at least one feed that contains your keyword (even if the app is closed or running in background)
 
-This project is a starting point for a Flutter application.
+### Homepage
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Settings
