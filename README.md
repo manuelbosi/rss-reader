@@ -1,4 +1,4 @@
-# Simple RSS Reader
+# Simple RSS Reader (work in progress)
 
 Read rss feeds from the website of Ministry of Economic Development.
 
