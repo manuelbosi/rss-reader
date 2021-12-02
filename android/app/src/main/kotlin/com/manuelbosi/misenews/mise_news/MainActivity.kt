@@ -1,4 +1,4 @@
-package com.manuelbosi.rssreader.rss_reader
+package com.manuelbosi.misenews.mise_news
 
 import io.flutter.embedding.android.FlutterActivity
 

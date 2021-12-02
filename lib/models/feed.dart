@@ -1,4 +1,4 @@
-import 'package:rss_reader/utils/helpers.dart';
+import 'package:mise_news/utils/helpers.dart';
 
 class FeedModel {
   String title;

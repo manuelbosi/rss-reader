@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rss_reader/constants/app_constants.dart';
-import 'package:rss_reader/services/shared_preferences.dart';
+import 'package:mise_news/constants/app_constants.dart';
+import 'package:mise_news/services/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 
 class Settings extends StatefulWidget {

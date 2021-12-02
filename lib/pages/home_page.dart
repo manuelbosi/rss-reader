@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rss_reader/components/feeds_list.dart';
-import 'package:rss_reader/components/search_delegate.dart';
-import 'package:rss_reader/components/side_menu.dart';
-import 'package:rss_reader/constants/app_constants.dart';
-import 'package:rss_reader/services/api.dart';
+import 'package:mise_news/components/feeds_list.dart';
+import 'package:mise_news/components/search_delegate.dart';
+import 'package:mise_news/components/side_menu.dart';
+import 'package:mise_news/constants/app_constants.dart';
+import 'package:mise_news/services/api.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);

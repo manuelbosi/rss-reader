@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rss_reader/constants/app_constants.dart';
-import 'package:rss_reader/models/feed.dart';
+import 'package:mise_news/constants/app_constants.dart';
+import 'package:mise_news/models/feed.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Widget buildFeedList(getFeedsFuture) {

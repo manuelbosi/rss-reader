@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rss_reader/pages/home_page.dart';
-import 'package:rss_reader/services/notifications.dart';
+import 'package:mise_news/pages/home_page.dart';
+import 'package:mise_news/services/notifications.dart';
 import 'package:workmanager/workmanager.dart';
 
 const String newFeed = 'NEW_FEED';

@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:rss_reader/services/api.dart';
+import 'package:mise_news/services/api.dart';
 import 'package:workmanager/workmanager.dart';
 
 void callbackDispatcher() {

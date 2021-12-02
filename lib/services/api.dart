@@ -1,10 +1,10 @@
 import 'package:http/http.dart' as http;
-import 'package:rss_reader/services/shared_preferences.dart';
+import 'package:mise_news/services/shared_preferences.dart';
 import 'package:webfeed/domain/rss_item.dart';
 import 'package:webfeed/domain/rss_feed.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:rss_reader/models/feed.dart';
-import 'package:rss_reader/services/notifications.dart';
+import 'package:mise_news/models/feed.dart';
+import 'package:mise_news/services/notifications.dart';
 
 const String feedsUrl =
     'https://www.mise.gov.it/index.php/it/per-i-media/notizie?format=feed&type=rss';
