@@ -60,12 +60,7 @@ class _SettingsState extends State<Settings> {
             const SizedBox(
               height: 16,
             ),
-            Row(
-              children: [Text("Active keyword: ${_keywordController.text}")],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
+            showActiveKeywordLabel(),
             Row(
               children: [
                 const Text(
@@ -120,5 +115,20 @@ class _SettingsState extends State<Settings> {
     setState(() {
       enableNotifications = notificationsPref;
     });
+  }
+
+  Widget showActiveKeywordLabel() {
+    return _keywordController.text.isNotEmpty
+        ? Column(
+            children: [
+              Row(
+                children: [Text("Active keyword: ${_keywordController.text}")],
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+            ],
+          )
+        : Row();
   }
 }
