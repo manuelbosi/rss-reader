@@ -53,26 +53,9 @@ class _SettingsState extends State<Settings> {
                 ),
                 hintText: 'Type here...',
               ),
-            ),
-            MaterialButton(
-              minWidth: double.infinity,
-              highlightColor: Colors.transparent,
-              splashColor: Colors.transparent,
-              elevation: 0,
-              highlightElevation: 2,
-              onPressed: () {
-                _onClickSave(_keywordController.text);
+              onChanged: (_) {
+                _onChangeKeyword(_keywordController.text);
               },
-              color: blue,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    "Save",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
             ),
             const SizedBox(
               height: 16,
@@ -97,9 +80,8 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  void _onClickSave(String keyword) async {
+  void _onChangeKeyword(String keyword) async {
     await setKeyword(keyword);
-    Navigator.pop(context);
   }
 
   void _getKeyword() async {
