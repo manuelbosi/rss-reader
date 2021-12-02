@@ -63,7 +63,7 @@ class _SettingsState extends State<Settings> {
             Row(
               children: [Text("Active keyword: ${_keywordController.text}")],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Row(
