@@ -26,7 +26,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Rss Reader"),
+        title: const Text("MISE News"),
         centerTitle: true,
         backgroundColor: blue,
         actions: [
