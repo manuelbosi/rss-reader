@@ -19,6 +19,7 @@ Widget buildFeedList(getFeedsFuture) {
             );
           case ConnectionState.done:
             return ListView.builder(
+              physics: const BouncingScrollPhysics(),
               itemCount: feeds.length,
               itemBuilder: (BuildContext context, int index) {
                 final String title = feeds[index].title;

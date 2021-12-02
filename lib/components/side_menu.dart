@@ -21,13 +21,14 @@ class SideMenu extends StatelessWidget {
           decoration: const BoxDecoration(color: blue),
           child: const Center(
             child: Text(
-              "RSS READER",
+              "MISE NEWS",
               style: TextStyle(fontSize: 28, color: Colors.white),
             ),
           ),
         ),
         Expanded(
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             padding: const EdgeInsets.symmetric(horizontal: 5),
             itemCount: menuEntries.length,
             itemBuilder: (context, index) {
