@@ -7,7 +7,7 @@ const String newFeed = 'NEW_FEED';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
+  Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
 
   runApp(const App());
 }
