@@ -2,9 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:workmanager/workmanager.dart';
+
 import 'package:mise_news/constants/app_constants.dart';
 import 'package:mise_news/services/shared_preferences.dart';
-import 'package:workmanager/workmanager.dart';
+import 'package:mise_news/components/animated_switch.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -33,7 +35,7 @@ class _SettingsState extends State<Settings> {
         backgroundColor: blue,
       ),
       body: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -49,7 +51,7 @@ class _SettingsState extends State<Settings> {
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+                  borderRadius: BorderRadius.circular(0),
                 ),
                 hintText: 'Type here...',
               ),
@@ -61,6 +63,13 @@ class _SettingsState extends State<Settings> {
               height: 16,
             ),
             showActiveKeywordLabel(),
+            Container(
+              color: Colors.grey.shade400,
+              height: 1,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
             Row(
               children: [
                 const Text(
@@ -68,11 +77,17 @@ class _SettingsState extends State<Settings> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Expanded(child: Container()),
-                Switch(
-                  activeColor: blue,
+                AnimatedSwitch(
                   value: enableNotifications,
+                  leftText: 'ON',
+                  rightText: 'OFF',
                   onChanged: (value) => _updateNotificationsPreference(value),
                 )
+                // Switch(
+                //   activeColor: blue,
+                //   value: enableNotifications,
+                //   onChanged: (value) => _updateNotificationsPreference(value),
+                // )
               ],
             )
           ],
@@ -92,17 +107,14 @@ class _SettingsState extends State<Settings> {
 
   void _updateNotificationsPreference(bool notificationPref) async {
     await setNotificationsPreference(notificationPref);
-
-    if (notificationPref) {
+    if (notificationPref && enableNotifications != true) {
       Workmanager().registerPeriodicTask(
         "NEW_FEED",
         "newFeedNotification",
         existingWorkPolicy: ExistingWorkPolicy.replace,
       );
-      log("NOTIFICATION ON");
     } else {
       Workmanager().cancelByUniqueName("NEW_FEED");
-      log("NOTIFICATION OFF");
     }
 
     setState(() {
@@ -122,7 +134,19 @@ class _SettingsState extends State<Settings> {
         ? Column(
             children: [
               Row(
-                children: [Text("Active keyword: ${_keywordController.text}")],
+                children: [
+                  Text(
+                    "Active keyword:",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue.shade900),
+                  ),
+                  Text(
+                    " ${_keywordController.text}",
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 16,
