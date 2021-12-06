@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:workmanager/workmanager.dart';
@@ -34,64 +32,81 @@ class _SettingsState extends State<Settings> {
         centerTitle: true,
         backgroundColor: blue,
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "YOUR KEYWORD",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextField(
-              controller: _keywordController,
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(0),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1,
+                  color: Colors.grey,
                 ),
-                hintText: 'Type here...',
               ),
-              onChanged: (_) {
-                _onChangeKeyword(_keywordController.text);
-              },
+              child: Column(
+                children: [
+                  ListTile(
+                    title: const Text("PAROLA CHIAVE"),
+                    subtitle: Column(
+                      children: [
+                        const Text(
+                            "L'applicazione aggiorna in background la lista di feed e invia una notifica quando trova un feed che contiene quella parola impostata."),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        TextField(
+                          controller: _keywordController,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 10),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(0),
+                            ),
+                            hintText: 'Scrivi una parola...',
+                          ),
+                          onChanged: (_) {
+                            _onChangeKeyword(_keywordController.text);
+                          },
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            showActiveKeywordLabel(),
-            Container(
-              color: Colors.grey.shade400,
-              height: 1,
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              children: [
-                const Text(
-                  "NOTIFICATIONS",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1,
+                  color: Colors.grey,
                 ),
-                Expanded(child: Container()),
-                AnimatedSwitch(
-                  value: enableNotifications,
-                  leftText: 'ON',
-                  rightText: 'OFF',
-                  onChanged: (value) => _updateNotificationsPreference(value),
-                )
-                // Switch(
-                //   activeColor: blue,
-                //   value: enableNotifications,
-                //   onChanged: (value) => _updateNotificationsPreference(value),
-                // )
-              ],
-            )
-          ],
-        ),
+              ),
+              child: Column(
+                children: [
+                  ListTile(
+                    title: const Text("NOTIFICHE"),
+                    subtitle: const Text(
+                        "Abilita o disabilita la ricezione di notifiche"),
+                    trailing: AnimatedSwitch(
+                      value: enableNotifications,
+                      leftText: 'ON',
+                      rightText: 'OFF',
+                      onChanged: (value) =>
+                          _updateNotificationsPreference(value),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
